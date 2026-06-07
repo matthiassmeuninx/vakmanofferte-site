@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gebruiksvoorwaarden — VakmanOfferte</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@700;800;900&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --d:#0b1220; --d2:#101929; --d3:#152033;
+  --bl:rgba(100,160,220,.1);
+  --st:#c8d8e8; --st2:#8ca8c0; --st3:#4a6880;
+  --or:#f07030; --orb:rgba(240,112,48,.28); --ors:rgba(240,112,48,.1);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  background: var(--d);
+  color: var(--st);
+  font-family: 'Barlow', sans-serif;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 60px 40px 100px;
+}
+
+/* Header */
+.doc-header {
+  border-bottom: 1px solid var(--bl);
+  padding-bottom: 36px;
+  margin-bottom: 48px;
+}
+
+.brand {
+  display: flex; align-items: center; gap: 10px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 18px; font-weight: 900;
+  text-transform: uppercase; letter-spacing: 1px;
+  color: var(--st); margin-bottom: 28px;
+  cursor: pointer; text-decoration: none;
+}
+
+.brand-mark {
+  width: 32px; height: 32px; border-radius: 7px;
+  background: var(--or);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+}
+
+.doc-type {
+  font-family: 'Geist Mono', monospace;
+  font-size: 10px; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--or);
+  margin-bottom: 12px;
+}
+
+.doc-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 48px; font-weight: 900;
+  text-transform: uppercase; letter-spacing: -.5px;
+  color: var(--st); line-height: 1; margin-bottom: 16px;
+}
+
+.doc-meta {
+  display: flex; gap: 20px; flex-wrap: wrap;
+  font-family: 'Geist Mono', monospace;
+  font-size: 11px; color: var(--st3);
+}
+
+.doc-meta span { display: flex; align-items: center; gap: 6px; }
+
+/* Alert box */
+.alert {
+  background: var(--ors);
+  border: 1px solid var(--orb);
+  border-radius: 10px; padding: 20px 24px;
+  margin-bottom: 40px;
+  display: flex; gap: 14px; align-items: flex-start;
+}
+
+.alert-ico { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+
+.alert-text {
+  font-size: 14px; color: var(--st);
+  line-height: 1.6; font-weight: 300;
+}
+
+.alert-text strong { color: var(--or); font-weight: 600; }
+
+/* Article layout */
+.article { margin-bottom: 40px; }
+
+.art-num {
+  font-family: 'Geist Mono', monospace;
+  font-size: 10px; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--or);
+  margin-bottom: 8px;
+}
+
+.art-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 22px; font-weight: 800;
+  text-transform: uppercase; letter-spacing: .3px;
+  color: var(--st); margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--bl);
+}
+
+.art-body {
+  font-size: 14px; font-weight: 300;
+  color: var(--st2); line-height: 1.8;
+}
+
+.art-body p { margin-bottom: 12px; }
+.art-body p:last-child { margin-bottom: 0; }
+
+.art-body strong { color: var(--st); font-weight: 600; }
+
+.art-body .key {
+  background: var(--d2);
+  border: 1px solid var(--bl);
+  border-radius: 6px; padding: 14px 18px;
+  margin: 14px 0;
+  font-size: 13px; color: var(--st);
+  line-height: 1.7;
+}
+
+.art-body .key-title {
+  font-family: 'Geist Mono', monospace;
+  font-size: 9px; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--or);
+  margin-bottom: 6px;
+}
+
+ul.art-ul {
+  list-style: none;
+  display: flex; flex-direction: column; gap: 8px;
+  margin: 12px 0;
+}
+
+ul.art-ul li {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 14px; color: var(--st2); font-weight: 300;
+  line-height: 1.6;
+}
+
+ul.art-ul li::before {
+  content: '→';
+  color: var(--or); font-size: 12px;
+  margin-top: 2px; flex-shrink: 0;
+  font-family: 'Geist Mono', monospace;
+}
+
+/* Signature / acceptance block */
+.accept-block {
+  background: var(--d2);
+  border: 1px solid var(--bl);
+  border-radius: 16px; padding: 32px;
+  margin-top: 56px;
+}
+
+.accept-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 20px; font-weight: 800;
+  text-transform: uppercase; letter-spacing: .3px;
+  color: var(--st); margin-bottom: 12px;
+}
+
+.accept-text {
+  font-size: 13px; color: var(--st2);
+  line-height: 1.6; font-weight: 300;
+  margin-bottom: 20px;
+}
+
+.accept-check {
+  display: flex; align-items: flex-start; gap: 12px;
+  background: var(--d3);
+  border: 1px solid var(--bl);
+  border-radius: 8px; padding: 14px 16px;
+  margin-bottom: 12px;
+  font-size: 13px; color: var(--st2);
+  line-height: 1.5;
+}
+
+.check-box {
+  width: 18px; height: 18px;
+  background: var(--or);
+  border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; flex-shrink: 0; margin-top: 1px;
+  color: #fff; font-weight: 700;
+}
+
+.accept-note {
+  font-family: 'Geist Mono', monospace;
+  font-size: 10px; color: var(--st3);
+  letter-spacing: .5px; margin-top: 16px;
+  line-height: 1.6;
+}
+
+/* Divider */
+.divider {
+  height: 1px; background: var(--bl);
+  margin: 48px 0;
+}
+
+/* Print button */
+.print-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 20px; border-radius: 6px;
+  background: var(--ors); border: 1px solid var(--orb);
+  color: var(--or); cursor: pointer;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px; font-weight: 700;
+  letter-spacing: 1px; text-transform: uppercase;
+  transition: all .2s; margin-bottom: 40px;
+}
+
+.print-btn:hover { background: var(--or); color: #fff; }
+
+@media print {
+  body { background: white; color: #1a1c16; }
+  .print-btn, .brand { display: none; }
+  .art-body { color: #444; }
+  .art-title { color: #1a1c16; border-color: #ddd; }
+  .doc-title { color: #1a1c16; }
+  .alert { background: #fff8f0; border-color: #f07030; }
+  .alert-text, .accept-text, .accept-check { color: #444; background: #f8f7f2; }
+  .accept-block { background: #f8f7f2; border-color: #ddd; }
+}
+
+@media (max-width: 640px) {
+  .wrap { padding: 40px 24px 80px; }
+  .doc-title { font-size: 36px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="brand" href="javascript:window.close()">
+    <div class="brand-mark">⚡</div>
+    VakmanOfferte
+  </a>
+
+  <button class="print-btn" onclick="window.print()">🖨️ Afdrukken / opslaan als PDF</button>
+
+  <!-- HEADER -->
+  <div class="doc-header">
+    <div class="doc-type">Juridisch document</div>
+    <div class="doc-title">Gebruiks&shy;voorwaarden</div>
+    <div class="doc-meta">
+      <span>📅 Versie 1.0 — juni 2025</span>
+      <span>🏢 VakmanOfferte</span>
+      <span>📍 Hasselt, België</span>
+    </div>
+  </div>
+
+  <!-- ALERT -->
+  <div class="alert">
+    <div class="alert-ico">⚠️</div>
+    <div class="alert-text">
+      <strong>Lees dit aandachtig.</strong> Door VakmanOfferte te gebruiken ga je akkoord met deze voorwaarden. Het kernpunt: VakmanOfferte is een hulpmiddel. <strong>Jij blijft als gebruiker verantwoordelijk</strong> voor de controle en verzending van elke offerte of factuur.
+    </div>
+  </div>
+
+  <!-- ART 1 -->
+  <div class="article">
+    <div class="art-num">Artikel 01</div>
+    <div class="art-title">Wie zijn wij en wat bieden wij aan</div>
+    <div class="art-body">
+      <p>VakmanOfferte is een softwaretool ontwikkeld en beheerd door Matthias, gevestigd te Hasselt, België. De dienst stelt zelfstandige vaklieden in staat om via kunstmatige intelligentie offertes en facturen te genereren op basis van door de gebruiker aangeleverde informatie.</p>
+      <p>VakmanOfferte is een <strong>hulpmiddel</strong>, geen erkende boekhouder, belastingadviseur of juridisch adviseur. De dienst vervangt geen professioneel advies.</p>
+    </div>
+  </div>
+
+  <!-- ART 2 -->
+  <div class="article">
+    <div class="art-num">Artikel 02</div>
+    <div class="art-title">Aansprakelijkheidsbeperking</div>
+    <div class="art-body">
+      <p>Dit is het belangrijkste artikel. Lees het zorgvuldig.</p>
+
+      <div class="key">
+        <div class="key-title">Kernbepaling</div>
+        VakmanOfferte kan <strong>niet aansprakelijk worden gesteld</strong> voor financiële, fiscale, juridische of commerciële gevolgen die voortvloeien uit het gebruik van door de tool gegenereerde documenten, inclusief maar niet beperkt tot:
+      </div>
+
+      <ul class="art-ul">
+        <li>Fouten in bedragen, hoeveelheden of eenheidsprijzen in gegenereerde offertes of facturen</li>
+        <li>Toepassing van een incorrect BTW-tarief</li>
+        <li>Onvolledige of onjuiste beschrijving van werkzaamheden of materialen</li>
+        <li>Verlies of gederfde inkomsten als gevolg van een foutief opgesteld document</li>
+        <li>Geschillen tussen de gebruiker en diens klanten over de inhoud van een offerte of factuur</li>
+        <li>Belastingboetes of naheffingen als gevolg van foutief toegepaste BTW-tarieven</li>
+      </ul>
+
+      <p>De gebruiker is te allen tijde zelf verantwoordelijk voor het controleren van alle door de tool gegenereerde documenten vóór verzending aan derden.</p>
+    </div>
+  </div>
+
+  <!-- ART 3 -->
+  <div class="article">
+    <div class="art-num">Artikel 03</div>
+    <div class="art-title">Verantwoordelijkheid van de gebruiker</div>
+    <div class="art-body">
+      <p>Door VakmanOfferte te gebruiken bevestigt de gebruiker uitdrukkelijk dat hij of zij:</p>
+      <ul class="art-ul">
+        <li>Elk gegenereerd document <strong>controleert op juistheid</strong> vóór verzending</li>
+        <li>Zelf verantwoordelijk is voor de correcte toepassing van BTW-tarieven conform de Belgische wetgeving</li>
+        <li>Zelf verantwoordelijk is voor de naleving van alle toepasselijke boekhoudkundige en fiscale verplichtingen</li>
+        <li>De tool uitsluitend gebruikt als ondersteunend hulpmiddel en niet als vervanging voor professioneel boekhoudkundig of juridisch advies</li>
+        <li>Bij twijfel over BTW-tarieven of juridische verplichtingen een erkende boekhouder of belastingadviseur raadpleegt</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ART 4 -->
+  <div class="article">
+    <div class="art-num">Artikel 04</div>
+    <div class="art-title">BTW en fiscale bepalingen</div>
+    <div class="art-body">
+      <p>VakmanOfferte tracht de Belgische BTW-regelgeving correct te verwerken in gegenereerde documenten. Dit omvat onder meer het verlaagd tarief van 6% voor renovatiewerken aan privéwoningen ouder dan 10 jaar en het standaardtarief van 21%.</p>
+
+      <div class="key">
+        <div class="key-title">Belangrijke disclaimer</div>
+        VakmanOfferte biedt <strong>geen fiscaal of belastingadvies</strong>. De BTW-berekeningen en tarieven in gegenereerde documenten zijn indicatief. De gebruiker is zelf verantwoordelijk voor de fiscale correctheid van zijn offertes en facturen. Bij twijfel raadpleegt de gebruiker een erkende boekhouder of de Belgische belastingdienst (FOD Financiën).
+      </div>
+
+      <p>Wijzigingen in de Belgische BTW-wetgeving kunnen niet altijd onmiddellijk worden verwerkt in de tool. VakmanOfferte is niet aansprakelijk voor schade als gevolg van verouderde fiscale parameters in de software.</p>
+    </div>
+  </div>
+
+  <!-- ART 5 -->
+  <div class="article">
+    <div class="art-num">Artikel 05</div>
+    <div class="art-title">Verwerking van persoonsgegevens (GDPR)</div>
+    <div class="art-body">
+      <p>VakmanOfferte verwerkt persoonsgegevens conform de Algemene Verordening Gegevensbescherming (AVG/GDPR). De gebruiker treedt op als verwerkingsverantwoordelijke voor de gegevens van zijn klanten. VakmanOfferte treedt op als verwerker.</p>
+
+      <ul class="art-ul">
+        <li>Persoonsgegevens van klanten (naam, adres, e-mailadres) worden uitsluitend verwerkt ten behoeve van het opstellen van offertes en facturen</li>
+        <li>Gegevens worden nooit verkocht of doorgegeven aan derden voor commerciële doeleinden</li>
+        <li>Klantgegevens worden maximaal 12 maanden bewaard na de laatste activiteit, tenzij de gebruiker eerder verwijdering aanvraagt</li>
+        <li>De gebruiker is zelf verantwoordelijk voor het informeren van zijn klanten over de verwerking van hun persoonsgegevens</li>
+      </ul>
+
+      <p>Bij gebruik van VakmanOfferte wordt automatisch een verwerkersovereenkomst van kracht conform artikel 28 AVG. De gebruiker kan de volledige verwerkersovereenkomst opvragen via het contactadres onderaan dit document.</p>
+    </div>
+  </div>
+
+  <!-- ART 6 -->
+  <div class="article">
+    <div class="art-num">Artikel 06</div>
+    <div class="art-title">Beschikbaarheid en nauwkeurigheid van de dienst</div>
+    <div class="art-body">
+      <p>VakmanOfferte maakt gebruik van kunstmatige intelligentie (Claude API van Anthropic) voor het genereren van documenten. AI-systemen zijn niet onfeilbaar.</p>
+
+      <ul class="art-ul">
+        <li>VakmanOfferte garandeert geen 100% nauwkeurigheid van gegenereerde documenten</li>
+        <li>De dienst wordt aangeboden "as is" zonder garantie van ononderbroken beschikbaarheid</li>
+        <li>Technische storingen bij externe partijen (Anthropic, WhatsApp Business API) vallen buiten de aansprakelijkheid van VakmanOfferte</li>
+        <li>VakmanOfferte behoudt het recht de dienst tijdelijk of permanent te wijzigen of stop te zetten</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ART 7 -->
+  <div class="article">
+    <div class="art-num">Artikel 07</div>
+    <div class="art-title">Betalingen en abonnementen</div>
+    <div class="art-body">
+      <p>Betalende abonnementen worden maandelijks gefactureerd via Stripe. De gebruiker kan zijn abonnement op elk moment opzeggen. Bij opzegging blijft de dienst actief tot het einde van de lopende facturatieperiode.</p>
+
+      <ul class="art-ul">
+        <li>Terugbetaling van reeds gefactureerde periodes is niet mogelijk, tenzij uitdrukkelijk anders overeengekomen</li>
+        <li>VakmanOfferte behoudt het recht tarieven te wijzigen met een kennisgeving van minimaal 30 dagen</li>
+        <li>Bij niet-betaling wordt de toegang tot de betaalde functies opgeschort</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ART 8 -->
+  <div class="article">
+    <div class="art-num">Artikel 08</div>
+    <div class="art-title">Toepasselijk recht en geschillen</div>
+    <div class="art-body">
+      <p>Op deze gebruiksvoorwaarden is het Belgisch recht van toepassing. Bij geschillen zijn uitsluitend de rechtbanken van het arrondissement Hasselt bevoegd.</p>
+      <p>VakmanOfferte streeft ernaar geschillen minnelijk op te lossen. De gebruiker kan klachten richten aan het contactadres onderaan dit document. VakmanOfferte verbindt zich ertoe binnen 14 werkdagen te reageren.</p>
+    </div>
+  </div>
+
+  <!-- ART 9 -->
+  <div class="article">
+    <div class="art-num">Artikel 09</div>
+    <div class="art-title">Wijzigingen aan deze voorwaarden</div>
+    <div class="art-body">
+      <p>VakmanOfferte behoudt het recht deze gebruiksvoorwaarden op elk moment te wijzigen. Gebruikers worden via e-mail of in-app notificatie op de hoogte gesteld van wezenlijke wijzigingen, minimaal 14 dagen vóór inwerkingtreding.</p>
+      <p>Voortgezet gebruik van de dienst na de kennisgeving geldt als aanvaarding van de gewijzigde voorwaarden.</p>
+    </div>
+  </div>
+
+  <!-- ART 10 -->
+  <div class="article">
+    <div class="art-num">Artikel 10</div>
+    <div class="art-title">Contact</div>
+    <div class="art-body">
+      <p>Voor vragen, klachten of het opvragen van de verwerkersovereenkomst:</p>
+      <div class="key">
+        <div class="key-title">Contactgegevens</div>
+        VakmanOfferte<br>
+        Hasselt, België<br>
+        📧 info@vakmanofferte.be<br>
+        🌐 vakmanofferte.be
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ACCEPTANCE BLOCK -->
+  <div class="accept-block">
+    <div class="accept-title">Akkoordverklaring bij registratie</div>
+    <div class="accept-text">
+      Dit is de tekst die de gebruiker aanvinkt bij registratie. Door aan te vinken bevestigt hij dat hij de voorwaarden gelezen en begrepen heeft.
+    </div>
+
+    <div class="accept-check">
+      <div class="check-box">✓</div>
+      <div>Ik heb de gebruiksvoorwaarden van VakmanOfferte gelezen en ga hiermee akkoord. Ik begrijp dat ik als gebruiker verantwoordelijk blijf voor de controle van alle gegenereerde documenten vóór verzending, en dat VakmanOfferte niet aansprakelijk kan worden gesteld voor fouten in offertes of facturen.</div>
+    </div>
+
+    <div class="accept-check">
+      <div class="check-box">✓</div>
+      <div>Ik begrijp dat VakmanOfferte geen fiscaal of juridisch advies verstrekt, en dat ik bij twijfel over BTW-tarieven of andere fiscale verplichtingen een erkende boekhouder raadpleeg.</div>
+    </div>
+
+    <div class="accept-check">
+      <div class="check-box">✓</div>
+      <div>Ik ga akkoord met de verwerking van persoonsgegevens zoals omschreven in artikel 5 van deze voorwaarden, en bevestig dat ik mijn eigen klanten zal informeren over het gebruik van VakmanOfferte bij het opstellen van hun offertes.</div>
+    </div>
+
+    <div class="accept-note">
+      // Deze voorwaarden zijn van kracht vanaf het moment van registratie.<br>
+      // Versie 1.0 — juni 2025 — VakmanOfferte, Hasselt, België
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

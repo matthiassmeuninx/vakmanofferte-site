@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Voorbeeld Offerte — OFF-0001 — VakmanOfferte</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;600;700;800;900&family=Barlow+Condensed:wght@700;800;900&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    background: #1a1c28;
+    font-family: 'Barlow', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+  }
+
+  .toolbar {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  .tb-brand {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 16px; font-weight: 800;
+    text-transform: uppercase; letter-spacing: 1px;
+    color: #c8d8e8;
+    display: flex; align-items: center; gap: 8px;
+  }
+
+  .tb-mark {
+    width: 28px; height: 28px;
+    background: #f07030; border-radius: 5px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+  }
+
+  .tb-actions { display: flex; gap: 8px; }
+
+  .tb-btn {
+    padding: 8px 18px; border-radius: 6px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px; font-weight: 700;
+    letter-spacing: 1px; text-transform: uppercase;
+    cursor: pointer; border: none; transition: all .2s;
+  }
+
+  .tb-btn.p { background: #f07030; color: #fff; }
+  .tb-btn.p:hover { background: #d85820; }
+  .tb-btn.s { background: transparent; border: 1px solid rgba(100,160,220,.25); color: #8ca8c0; }
+  .tb-btn.s:hover { border-color: #8ca8c0; color: #c8d8e8; }
+
+  .label-strip {
+    width: 100%; max-width: 800px;
+    background: rgba(240,112,48,.08);
+    border: 1px solid rgba(240,112,48,.2);
+    border-radius: 8px; padding: 10px 16px;
+    margin-bottom: 20px;
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px; color: #f07030;
+    letter-spacing: 1px;
+    display: flex; align-items: center; gap: 8px;
+  }
+
+  /* THE DOCUMENT */
+  .doc {
+    width: 100%; max-width: 800px;
+    background: #f8f7f2;
+    border-radius: 4px;
+    box-shadow: 0 32px 100px rgba(0,0,0,.6), 0 0 0 1px rgba(0,0,0,.1);
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* Orange measurement strip on top */
+  .doc-strip {
+    height: 6px;
+    background: repeating-linear-gradient(
+      90deg,
+      #f07030 0px, #f07030 10px,
+      #1a1c16 10px, #1a1c16 20px
+    );
+  }
+
+  .doc-inner { padding: 52px 56px; color: #1a1c16; }
+
+  /* Watermark */
+  .watermark {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%) rotate(-35deg);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 72px; font-weight: 900;
+    text-transform: uppercase; letter-spacing: 4px;
+    color: rgba(240,112,48,.06);
+    pointer-events: none;
+    white-space: nowrap;
+  }
+
+  /* Header */
+  .doc-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 40px;
+    padding-bottom: 28px;
+    border-bottom: 2px solid #e8e4d8;
+  }
+
+  .co-block {}
+
+  .co-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 26px; font-weight: 900;
+    text-transform: uppercase; letter-spacing: .5px;
+    color: #0e1018; margin-bottom: 8px;
+  }
+
+  .co-detail {
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px; color: #888;
+    line-height: 1.8;
+  }
+
+  .co-detail .highlight { color: #f07030; }
+
+  .doc-title-block { text-align: right; }
+
+  .doc-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 52px; font-weight: 900;
+    text-transform: uppercase; letter-spacing: 2px;
+    color: #f07030; line-height: 1;
+  }
+
+  .doc-meta {
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px; color: #888;
+    text-align: right; margin-top: 8px;
+    line-height: 2;
+  }
+
+  .doc-meta .doc-num { color: #1a1c16; font-weight: 500; }
+
+  /* Client block */
+  .client-block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .client-card {
+    background: #f2f0e6;
+    border-radius: 6px; padding: 18px 20px;
+    border-left: 3px solid #f07030;
+  }
+
+  .cc-label {
+    font-family: 'Geist Mono', monospace;
+    font-size: 9px; letter-spacing: 2px;
+    text-transform: uppercase; color: #aaa;
+    margin-bottom: 8px;
+  }
+
+  .cc-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 18px; font-weight: 800;
+    text-transform: uppercase; color: #1a1c16;
+    margin-bottom: 4px;
+  }
+
+  .cc-info { font-size: 12px; color: #666; line-height: 1.6; }
+
+  /* Subject */
+  .doc-subject {
+    background: #f2f0e6;
+    border-radius: 6px; padding: 14px 18px;
+    margin-bottom: 28px;
+    font-size: 13px; color: #444; line-height: 1.5;
+  }
+
+  .doc-subject strong { color: #1a1c16; font-family: 'Barlow Condensed', sans-serif; font-size: 14px; text-transform: uppercase; letter-spacing: .3px; }
+
+  /* Table */
+  .doc-table { width: 100%; border-collapse: collapse; margin-bottom: 24px; }
+
+  .doc-table thead tr {
+    background: #1a1c16;
+  }
+
+  .doc-table th {
+    padding: 10px 12px;
+    font-family: 'Geist Mono', monospace;
+    font-size: 9px; letter-spacing: 2px;
+    text-transform: uppercase; color: #c8d8e8;
+    text-align: left; font-weight: 500;
+  }
+
+  .doc-table th.r { text-align: right; }
+
+  .doc-table td {
+    padding: 12px 12px;
+    border-bottom: 1px solid #ede9dc;
+    font-size: 13px; color: #333;
+    vertical-align: top;
+  }
+
+  .doc-table tr:last-child td { border-bottom: none; }
+  .doc-table tr:nth-child(even) td { background: #faf9f4; }
+
+  .doc-table td.r {
+    text-align: right;
+    font-family: 'Geist Mono', monospace;
+    font-size: 12px; color: #1a1c16;
+  }
+
+  .doc-table td .cat {
+    font-family: 'Geist Mono', monospace;
+    font-size: 9px; letter-spacing: 1px;
+    text-transform: uppercase; color: #f07030;
+    margin-bottom: 2px;
+  }
+
+  /* Totals */
+  .totals-block {
+    display: flex; justify-content: flex-end;
+    margin-bottom: 28px;
+  }
+
+  .totals-table { width: 300px; }
+
+  .tt-row {
+    display: flex; justify-content: space-between;
+    padding: 6px 0;
+    font-size: 13px; color: #666;
+    border-bottom: .5px solid #ede9dc;
+  }
+
+  .tt-row:last-child { border-bottom: none; }
+
+  .tt-row.sub { color: #888; font-size: 12px; }
+
+  .tt-row.btw { color: #f07030; }
+
+  .tt-row.total {
+    background: #1a1c16;
+    color: #f8f7f2;
+    padding: 12px 14px;
+    margin-top: 8px;
+    border-radius: 6px;
+    border-bottom: none;
+  }
+
+  .tt-row.total .tt-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 16px; font-weight: 900;
+    text-transform: uppercase; letter-spacing: 1px;
+  }
+
+  .tt-row.total .tt-val {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 22px; font-weight: 900;
+    color: #f07030;
+  }
+
+  .tt-label { font-weight: 500; }
+  .tt-val { font-family: 'Geist Mono', monospace; font-size: 13px; }
+
+  /* BTW uitleg box */
+  .btw-box {
+    background: rgba(240,112,48,.06);
+    border: 1px solid rgba(240,112,48,.2);
+    border-radius: 6px; padding: 14px 18px;
+    margin-bottom: 24px;
+    display: flex; align-items: flex-start; gap: 12px;
+  }
+
+  .btw-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+
+  .btw-text { font-size: 11px; color: #666; line-height: 1.6; }
+
+  .btw-formula {
+    font-family: 'Geist Mono', monospace;
+    background: rgba(0,0,0,.05);
+    padding: 6px 10px; border-radius: 4px;
+    margin-top: 6px; font-size: 11px; color: #f07030;
+  }
+
+  /* Footer */
+  .doc-footer {
+    border-top: 1.5px solid #e8e4d8;
+    padding-top: 20px;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .df-block {}
+
+  .df-label {
+    font-family: 'Geist Mono', monospace;
+    font-size: 9px; letter-spacing: 2px;
+    text-transform: uppercase; color: #aaa;
+    margin-bottom: 6px;
+  }
+
+  .df-value { font-size: 12px; color: #555; line-height: 1.6; }
+
+  .df-sig {
+    margin-top: 32px;
+    border-top: 1px solid #ddd;
+    padding-top: 8px;
+    font-size: 10px; color: #ccc;
+    font-family: 'Geist Mono', monospace;
+    display: flex; justify-content: space-between;
+  }
+
+  .doc-bottom-strip {
+    height: 4px;
+    background: repeating-linear-gradient(
+      90deg,
+      #f07030 0px, #f07030 8px,
+      #1a1c16 8px, #1a1c16 16px
+    );
+    opacity: .3;
+  }
+
+  @media print {
+    body { background: white; padding: 0; }
+    .toolbar, .label-strip { display: none; }
+    .doc { box-shadow: none; }
+    .watermark { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="tb-brand">
+    <div class="tb-mark">⚡</div>
+    VakmanOfferte
+  </div>
+  <div class="tb-actions">
+    <button class="tb-btn s" onclick="window.history.back()">← Terug</button>
+    <button class="tb-btn p" onclick="window.print()">📥 Download PDF</button>
+  </div>
+</div>
+
+<div class="label-strip">
+  📋 VOORBEELD OFFERTE — Gegenereerd door VakmanOfferte AI — Dit is een demo document
+</div>
+
+<div class="doc">
+  <div class="doc-strip"></div>
+  <div class="watermark">Voorbeeld</div>
+
+  <div class="doc-inner">
+
+    <!-- Header -->
+    <div class="doc-header">
+      <div class="co-block">
+        <div class="co-name">Loodgietersbedrijf Peeters</div>
+        <div class="co-detail">
+          <div>BTW: <span class="highlight">BE 0623.441.892</span></div>
+          <div>Tel: <span class="highlight">+32 11 44 55 66</span></div>
+          <div>info@peeters-loodgieter.be</div>
+          <div>Ringlaan 47 — 3500 Hasselt</div>
+        </div>
+      </div>
+      <div class="doc-title-block">
+        <div class="doc-title">OFFERTE</div>
+        <div class="doc-meta">
+          <div>Nr: <span class="doc-num">OFF-0001</span></div>
+          <div>Datum: 06/06/2025</div>
+          <div>Geldig tot: 06/07/2025</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Client -->
+    <div class="client-block">
+      <div class="client-card">
+        <div class="cc-label">Klant</div>
+        <div class="cc-name">Familie Janssen</div>
+        <div class="cc-info">
+          Stationsstraat 14<br>
+          3590 Diepenbeek<br>
+          jan.janssen@telenet.be
+        </div>
+      </div>
+      <div class="client-card">
+        <div class="cc-label">Werklocatie</div>
+        <div class="cc-name">Woning Diepenbeek</div>
+        <div class="cc-info">
+          Stationsstraat 14, 3590 Diepenbeek<br>
+          Bouwjaar: 2001 (renovatie)<br>
+          BTW-tarief: 6% van toepassing
+        </div>
+      </div>
+    </div>
+
+    <!-- Subject -->
+    <div class="doc-subject">
+      <strong>Betreft:</strong> Renovatie badkamer — vervanging kranen, leidingwerk en aansluiting nieuwe douche-installatie op het gelijkvloers, woning Stationsstraat 14, Diepenbeek.
+    </div>
+
+    <!-- Table -->
+    <table class="doc-table">
+      <thead>
+        <tr>
+          <th style="width:40%">Omschrijving</th>
+          <th class="r">Aantal</th>
+          <th>Eenheid</th>
+          <th class="r">Eenheidsprijs</th>
+          <th class="r">Totaal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="cat">Arbeid</div>
+            Vervanging mengkranen bad en wastafel — inclusief afsluiting hoofdkraan, demonteren oud materiaal en afvoer
+          </td>
+          <td class="r">3,0</td>
+          <td>uur</td>
+          <td class="r">€ 70,00</td>
+          <td class="r">€ 210,00</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="cat">Arbeid</div>
+            Aansluiten nieuwe inloopdouche — inclusief waterafdichting, thermostaat en afvoerpunt
+          </td>
+          <td class="r">2,0</td>
+          <td>uur</td>
+          <td class="r">€ 70,00</td>
+          <td class="r">€ 140,00</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="cat">Materiaal</div>
+            Grohe Eurosmart mengkraan bad (chroom, 5-jarige garantie)
+          </td>
+          <td class="r">1</td>
+          <td>stuk</td>
+          <td class="r">€ 88,00</td>
+          <td class="r">€ 88,00</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="cat">Materiaal</div>
+            Grohe Eurosmart mengkraan wastafel (chroom)
+          </td>
+          <td class="r">1</td>
+          <td>stuk</td>
+          <td class="r">€ 72,00</td>
+          <td class="r">€ 72,00</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="cat">Materiaal</div>
+            Koperleiding 15mm — vervanging toe- en afvoerleidingen
+          </td>
+          <td class="r">6</td>
+          <td>m</td>
+          <td class="r">€ 11,00</td>
+          <td class="r">€ 66,00</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="cat">Materiaal</div>
+            Fittingen, soldeermateriaal en afdichtingsset (forfait)
+          </td>
+          <td class="r">1</td>
+          <td>forfait</td>
+          <td class="r">€ 28,00</td>
+          <td class="r">€ 28,00</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="cat">Verplaatsing</div>
+            Verplaatsingskosten Hasselt → Diepenbeek (forfait)
+          </td>
+          <td class="r">1</td>
+          <td>forfait</td>
+          <td class="r">€ 35,00</td>
+          <td class="r">€ 35,00</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- BTW uitleg -->
+    <div class="btw-box">
+      <div class="btw-icon">ℹ️</div>
+      <div class="btw-text">
+        <strong>BTW 6% — Renovatie</strong> van toepassing: de woning is ouder dan 10 jaar en betreft een verbouwing/renovatie van een privéwoning. Conform art. 1quinquies KB nr. 20 is het verlaagd tarief van 6% van toepassing op zowel de arbeid als de materialen.
+        <div class="btw-formula">Berekening: €639,00 × 6% = €38,34 BTW</div>
+      </div>
+    </div>
+
+    <!-- Totals -->
+    <div class="totals-block">
+      <div class="totals-table">
+        <div class="tt-row sub">
+          <span class="tt-label">Arbeid (5 uur)</span>
+          <span class="tt-val">€ 350,00</span>
+        </div>
+        <div class="tt-row sub">
+          <span class="tt-label">Materialen</span>
+          <span class="tt-val">€ 254,00</span>
+        </div>
+        <div class="tt-row sub">
+          <span class="tt-label">Verplaatsing</span>
+          <span class="tt-val">€ 35,00</span>
+        </div>
+        <div class="tt-row">
+          <span class="tt-label">Subtotaal excl. BTW</span>
+          <span class="tt-val">€ 639,00</span>
+        </div>
+        <div class="tt-row btw">
+          <span class="tt-label">BTW 6%</span>
+          <span class="tt-val">€ 38,34</span>
+        </div>
+        <div class="tt-row total">
+          <span class="tt-label">TOTAAL</span>
+          <span class="tt-val">€ 677,34</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="doc-footer">
+      <div class="df-block">
+        <div class="df-label">Betalingsvoorwaarden</div>
+        <div class="df-value">
+          Betaling binnen 30 dagen na factuurdatum.<br>
+          Rekeningnummer: BE12 3456 7890 1234<br>
+          Mededeling: OFF-0001 — Janssen
+        </div>
+      </div>
+      <div class="df-block">
+        <div class="df-label">Garantie &amp; opmerkingen</div>
+        <div class="df-value">
+          Garantie op arbeid: 2 jaar.<br>
+          Garantie op materialen: conform fabrieksgarantie.<br>
+          Offerte geldig tot 06/07/2025.
+        </div>
+      </div>
+    </div>
+
+    <div class="df-sig">
+      <span>Handtekening voor akkoord klant: ___________________</span>
+      <span>Datum: _______________</span>
+    </div>
+
+  </div>
+  <div class="doc-bottom-strip"></div>
+</div>
+
+<div style="height:60px"></div>
+
+</body>
+</html>
